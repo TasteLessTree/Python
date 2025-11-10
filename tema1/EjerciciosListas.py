@@ -13,7 +13,7 @@ if invitados.__contains__(verificar):
 else:
     print(f'{verificar} no fue invitado')
 
-confirmar = input("\n¿Quieres eliminar a alguien de la lista? (si/no): ")
+confirmar = input("\n¿Quieres eliminar a alguien de la lista? (si/no): ").lower()
 
 if confirmar == "si":
     eliminar = input("Escribe el nombre: ")
