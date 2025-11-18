@@ -1,9 +1,7 @@
 alumnos = []
 
-print("Vas a escribir los nombres de los alumnos (o escribe 'fin' para salir)")
-
 while True:
-    nombre = input("Introduce el nombre del alumno: ")
+    nombre = input("Introduce el nombre del alumno (o escribe 'fin' para salir): ")
     if nombre.lower().strip() != "fin":
         alumnos.append(nombre)
     else:
@@ -22,7 +20,7 @@ print(f'Tupla final: {alumnos_tupla}')
 
 # Verificar si existe un alumno
 nombre = input("Escribe el nombre del alumno que desea buscar: ")
-if alumnos_set.__contains__(nombre):
+if nombre in alumnos_tupla:
     print(f'{nombre} se encuentra entre los alumnos')
 else:
     print(f'{nombre} no es un alumno')
