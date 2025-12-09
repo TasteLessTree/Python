@@ -87,24 +87,24 @@ def borrar_alumno(conn, id_alumno):
 if __name__ == '__main__':
     # 1. Conexión
     conn = conectar()
-if conn:
-    # 2. Inicialización
-    crear_tabla(conn)
-    # 3. CREATE (Insertar datos de prueba)
-    # Nota: SQLite almacena True como 1 y False como 0
-    crear_alumno(conn, ("Ana", "García", "1º Bach", "Matemáticas", 8.5, True))
-    crear_alumno(conn, ("Luis", "Pérez", "1º Bach", "Matemáticas", 5.2, False))
-    crear_alumno(conn, ("Rosa", "Pérez", "1º Bach", "Matemáticas", 4.6, False))
-    crear_alumno(conn, ("Mateo", "Pérez", "1º Bach", "Matemáticas", 9.7, True))
-    crear_alumno(conn, ("Felix", "Pérez", "1º Bach", "Matemáticas", 2.5, False))
-    # 4. READ (Leer datos)
-    leer_alumnos(conn)
-    # 5. UPDATE (Actualizar nota de Luis, ID probable 2)
-    # Supongamos que Luis recuperó y sacó un 6
-    actualizar_nota(conn, 2, 6.0)
-    # 6. DELETE (Borrar a Ana, ID probable 1)
-    borrar_alumno(conn, 1)
-    # Verificamos estado final
-    leer_alumnos(conn)
-    # 7. Cerrar conexión (Muy importante)
-    conn.close()
+    if conn:
+        # 2. Inicialización
+        crear_tabla(conn)
+        # 3. CREATE (Insertar datos de prueba)
+        # Nota: SQLite almacena True como 1 y False como 0
+        crear_alumno(conn, ("Ana", "García", "1º Bach", "Matemáticas", 8.5, True))
+        crear_alumno(conn, ("Luis", "Pérez", "1º Bach", "Matemáticas", 5.2, False))
+        crear_alumno(conn, ("Rosa", "Pérez", "1º Bach", "Matemáticas", 4.6, False))
+        crear_alumno(conn, ("Mateo", "Pérez", "1º Bach", "Matemáticas", 9.7, True))
+        crear_alumno(conn, ("Felix", "Pérez", "1º Bach", "Matemáticas", 2.5, False))
+        # 4. READ (Leer datos)
+        leer_alumnos(conn)
+        # 5. UPDATE (Actualizar nota de Luis, ID probable 2)
+        # Supongamos que Luis recuperó y sacó un 6
+        actualizar_nota(conn, 2, 6.0)
+        # 6. DELETE (Borrar a Ana, ID probable 1)
+        borrar_alumno(conn, 1)
+        # Verificamos estado final
+        leer_alumnos(conn)
+        # 7. Cerrar conexión (Muy importante)
+        conn.close()
