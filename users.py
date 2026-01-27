@@ -1,10 +1,9 @@
-# Ejemplo con fastAPI y una mini base de datos
 import sqlite3
 
-from fastapi import FastAPI
+import fastapi from APIRouter
 from pydantic import BaseModel
 
-app = FastAPI()
+router = fastapi.APIRouter()
 
 class Usuario(BaseModel):
     id: int
@@ -12,7 +11,7 @@ class Usuario(BaseModel):
     email: str
     clave: str
 
-@app.get('/usuarios')
+@router.get('/usuarios')
 async def get_usuarios() -> dict[str, list[Usuario]] | dict[str, str]:
     try:
         conn = sqlite3.connect('prueba.db')
@@ -34,7 +33,7 @@ async def get_usuarios() -> dict[str, list[Usuario]] | dict[str, str]:
     except sqlite3.OperationalError:
         return {'Error': 'Error al abrir la base de datos. No se pudieren obtener los usuarios.'}
 
-@app.get('/usuario/{id}')
+@router.get('/usuario/{id}')
 async def get_usuario(user_id: int) -> dict[str, str]:
     try:
         conn = sqlite3.connect('prueba.db')
@@ -57,7 +56,7 @@ async def get_usuario(user_id: int) -> dict[str, str]:
     except sqlite3.OperationalError:
         return {'Error': f'Error al abrir la base de datos. No se pudo obtener el usuario con id: {user_id}.'}
 
-@app.get('/get_usuario')
+@router.get('/get_usuario')
 async def get_usuario(name: str, email: str) -> dict[str, str]:
     try:
         conn = sqlite3.connect('prueba.db')
